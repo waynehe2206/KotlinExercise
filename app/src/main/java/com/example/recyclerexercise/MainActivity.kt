@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.recyclerexercise.adapter.GithubUserListAdapter
 import com.example.recyclerexercise.data.repository.GithubUserRepository
 import com.example.recyclerexercise.data.service.GithubUserService
@@ -21,18 +24,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-private lateinit var sGithubUserService: GithubUserService
-private lateinit var sGithubUserDataSource: GithubUserDataSource
-private lateinit var sGithubUserRepository: GithubUserRepository
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var githubUserRepository: GithubUserRepository
-    private lateinit var githubUserVIewModel: GithubUserVIewModel
-    private val githubUserListAdapter: GithubUserListAdapter by lazy {
-        GithubUserListAdapter()
-    }
+    private lateinit var navController: NavController
 
     companion object{
         const val TAG: String = "MainActivity"
@@ -40,49 +35,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initUI()
-        initModel()
-        initViewModel()
-        observeData()
-
-        githubUserVIewModel.loadGithubUsers()
-    }
-
-    private fun initUI() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.rvUserList.adapter = githubUserListAdapter
+        // setup back function for navigation
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+        setupActionBarWithNavController(navController)
     }
 
-    private fun initModel(){
-        val okHttpClient = OkHttpClient.Builder().apply {
-            connectTimeout(60, TimeUnit.SECONDS)
-            readTimeout(60, TimeUnit.SECONDS)
-            writeTimeout(60, TimeUnit.SECONDS)
-        }.build()
-
-        sGithubUserService = Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
-                .addConverterFactory(GsonConverterFactory.create(Gson()))
-                .client(okHttpClient)
-                .build()
-                .create(GithubUserService::class.java)
-        sGithubUserDataSource = GithubUserDataSource(sGithubUserService)
-        sGithubUserRepository = GithubUserRepository(sGithubUserDataSource)
-
-        githubUserRepository = sGithubUserRepository
-    }
-
-    private fun initViewModel(){
-        githubUserVIewModel = GithubUserVIewModel(githubUserRepository)
-    }
-
-    private fun observeData(){
-        githubUserVIewModel.apply {
-            githubUsers.observe(this@MainActivity) {
-                githubUserListAdapter.submitList(it)
-            }
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

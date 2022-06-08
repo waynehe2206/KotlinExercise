@@ -2,6 +2,7 @@ package com.example.recyclerexercise.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.example.recyclerexercise.data.model.GithubUser
 import com.example.recyclerexercise.databinding.ItemGithubUsersBinding
+import com.example.recyclerexercise.ui.fragment.MainFragmentDirections
 
 class GithubUserListAdapter : ListAdapter<GithubUser, GithubUserListAdapter.UserViewHolder>(object :
     DiffUtil.ItemCallback<GithubUser>() {
@@ -50,8 +52,14 @@ class GithubUserListAdapter : ListAdapter<GithubUser, GithubUserListAdapter.User
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        getItem(position)?.let {
-            holder.bindGithubUserData(holder.binding, it)
+        getItem(position)?.let { data ->
+            holder.bindGithubUserData(holder.binding, data)
+            holder.binding.root.run{
+                setOnClickListener {
+                    val action = MainFragmentDirections.actionMainFragmentToUserDetailFragment(userData = data)
+                    it.findNavController().navigate(action)
+                }
+            }
         }
     }
 }

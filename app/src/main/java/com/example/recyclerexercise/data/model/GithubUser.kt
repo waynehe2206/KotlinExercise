@@ -1,5 +1,7 @@
 package com.example.recyclerexercise.data.model
 
+import java.io.Serializable
+
 data class GithubUser(
     val avatar_url: String,
     val events_url: String,
@@ -19,4 +21,4 @@ data class GithubUser(
     val subscriptions_url: String,
     val type: String,
     val url: String
-)
+): Serializable
