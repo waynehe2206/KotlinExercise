@@ -25,4 +25,13 @@ class GithubUserVIewModel(private val githubUserRepository: GithubUserRepository
             }
         }
     }
+
+    fun loadGithubUsers(since: Int = 0){
+        viewModelScope.launch(Dispatchers.IO) {
+            val githubUserList = githubUserRepository.getUsers(since)
+            viewModelScope.launch(Dispatchers.Main){
+                _githubUsers.value = githubUserList
+            }
+        }
+    }
 }
