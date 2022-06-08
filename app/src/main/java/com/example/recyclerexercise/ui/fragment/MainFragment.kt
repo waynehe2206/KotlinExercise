@@ -5,23 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.recyclerexercise.MainActivity
-import com.example.recyclerexercise.R
 import com.example.recyclerexercise.adapter.GithubUserListAdapter
-import com.example.recyclerexercise.data.repository.GithubUserRepository
-import com.example.recyclerexercise.data.service.GithubUserService
-import com.example.recyclerexercise.data.source.GithubUserDataSource
 import com.example.recyclerexercise.databinding.FragmentMainBinding
-import com.example.recyclerexercise.viewmodel.GithubUserVIewModel
-import com.google.gson.Gson
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
-
-private lateinit var sGithubUserService: GithubUserService
-private lateinit var sGithubUserDataSource: GithubUserDataSource
-private lateinit var sGithubUserRepository: GithubUserRepository
+import com.example.recyclerexercise.viewmodel.GithubUserViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -35,17 +22,13 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-    private lateinit var githubUserRepository: GithubUserRepository
-    private lateinit var githubUserVIewModel: GithubUserVIewModel
+    private val githubUserViewModel: GithubUserViewModel by viewModel<GithubUserViewModel>()
     private val githubUserListAdapter: GithubUserListAdapter by lazy {
         GithubUserListAdapter()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        initModel()
-        initViewModel()
         observeData()
     }
 
@@ -60,34 +43,11 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvUserList.adapter = githubUserListAdapter
-        githubUserVIewModel.loadGithubUsers()
-    }
-
-    private fun initModel(){
-        val okHttpClient = OkHttpClient.Builder().apply {
-            connectTimeout(60, TimeUnit.SECONDS)
-            readTimeout(60, TimeUnit.SECONDS)
-            writeTimeout(60, TimeUnit.SECONDS)
-        }.build()
-
-        sGithubUserService = Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
-            .addConverterFactory(GsonConverterFactory.create(Gson()))
-            .client(okHttpClient)
-            .build()
-            .create(GithubUserService::class.java)
-        sGithubUserDataSource = GithubUserDataSource(sGithubUserService)
-        sGithubUserRepository = GithubUserRepository(sGithubUserDataSource)
-
-        githubUserRepository = sGithubUserRepository
-    }
-
-    private fun initViewModel(){
-        githubUserVIewModel = GithubUserVIewModel(githubUserRepository)
+        githubUserViewModel.loadGithubUsers()
     }
 
     private fun observeData(){
-        githubUserVIewModel.apply {
+        githubUserViewModel.apply {
             githubUsers.observe(this@MainFragment) {
                 githubUserListAdapter.submitList(it)
             }

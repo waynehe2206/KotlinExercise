@@ -1,28 +1,12 @@
-package com.example.recyclerexercise
+package com.example.recyclerexercise.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.recyclerexercise.adapter.GithubUserListAdapter
-import com.example.recyclerexercise.data.repository.GithubUserRepository
-import com.example.recyclerexercise.data.service.GithubUserService
-import com.example.recyclerexercise.data.source.GithubUserDataSource
+import com.example.recyclerexercise.R
 import com.example.recyclerexercise.databinding.ActivityMainBinding
-import com.example.recyclerexercise.viewmodel.GithubUserVIewModel
-import com.google.gson.Gson
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 

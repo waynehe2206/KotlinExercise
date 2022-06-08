@@ -9,9 +9,9 @@ import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class GithubUserVIewModel(private val githubUserRepository: GithubUserRepository): ViewModel() {
+class GithubUserViewModel(private val githubUserRepository: GithubUserRepository): ViewModel() {
     companion object {
-        private const val TAG = "GithubUserVIewModel"
+        private const val TAG = "GithubUserViewModel"
     }
 
     private val _githubUsers = LiveEvent<List<GithubUser>>()
