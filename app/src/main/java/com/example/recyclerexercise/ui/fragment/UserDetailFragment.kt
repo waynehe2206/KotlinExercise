@@ -48,6 +48,21 @@ class UserDetailFragment : Fragment() {
                     .transform(CenterCrop())
                     .into(this)
             }
+
+            binding.tvType.text = it.type
+            binding.tvUserId.text = getString(R.string.user_detail_id).format(it.id)
+            binding.tvNodeId.text = getString(R.string.user_detail_node_id).format(it.node_id)
+            binding.tvUrl.text = it.url
+            binding.tvHtmlUrl.text = it.html_url
+            binding.tvFollowerUrl.text = it.followers_url
+            binding.tvFollowingUrl.text = it.following_url
+            binding.tvGistUrl.text = it.gists_url
+            binding.tvStarredUrl.text = it.starred_url
+            binding.tvSubscriptionUrl.text = it.subscriptions_url
+            binding.tvOrganizationUrl.text = it.organizations_url
+            binding.tvRepoUrl.text = it.repos_url
+            binding.tvEventsUrl.text = it.events_url
+            binding.tvReceivedEventsUrl.text = it.received_events_url
         }
 
     }

@@ -16,14 +16,162 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:src="@drawable/ic_launcher_background"/>
     <TextView
+        android:id="@+id/tvType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/ivUserThumbnail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
         android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_blank_fragment"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/ivUserThumbnail"
+        app:layout_constraintTop_toBottomOf="@id/tvType"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glVerticalCenter"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <TextView
+        android:id="@+id/tvUserId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/user_detail_id"
+        app:layout_constraintTop_toBottomOf="@id/tvUserName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/glVerticalCenter"/>
+
+    <TextView
+        android:id="@+id/tvNodeId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/user_detail_node_id"
+        app:layout_constraintTop_toBottomOf="@id/tvUserId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/glVerticalCenter"/>
+
+    <TextView
+        android:id="@+id/tvUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Node Id: 100"
+        app:layout_constraintTop_toBottomOf="@id/tvNodeId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/glVerticalCenter"/>
+
+    <TextView
+        android:id="@+id/tvHtmlUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Node Id: 100"
+        app:layout_constraintTop_toBottomOf="@id/tvUrl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/glVerticalCenter"/>
+
+    <TextView
+        android:id="@+id/tvFollowerUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Node Id: 100"
+        app:layout_constraintTop_toBottomOf="@id/tvHtmlUrl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/glVerticalCenter"/>
+
+    <TextView
+        android:id="@+id/tvFollowingUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Node Id: 100"
+        app:layout_constraintTop_toBottomOf="@id/tvFollowerUrl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/glVerticalCenter"/>
+
+    <TextView
+        android:id="@+id/tvGistUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Node Id: 100"
+        app:layout_constraintTop_toBottomOf="@id/tvFollowingUrl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/glVerticalCenter"/>
+
+    <TextView
+        android:id="@+id/tvStarredUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="id: 100"
+        app:layout_constraintTop_toBottomOf="@id/tvUserName"
+        app:layout_constraintStart_toEndOf="@id/glVerticalCenter"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvSubscriptionUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="id: 100"
+        app:layout_constraintTop_toBottomOf="@id/tvStarredUrl"
+        app:layout_constraintStart_toEndOf="@id/glVerticalCenter"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvOrganizationUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="id: 100"
+        app:layout_constraintTop_toBottomOf="@id/tvSubscriptionUrl"
+        app:layout_constraintStart_toEndOf="@id/glVerticalCenter"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvRepoUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="id: 100"
+        app:layout_constraintTop_toBottomOf="@id/tvOrganizationUrl"
+        app:layout_constraintStart_toEndOf="@id/glVerticalCenter"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvEventsUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="id: 100"
+        app:layout_constraintTop_toBottomOf="@id/tvRepoUrl"
+        app:layout_constraintStart_toEndOf="@id/glVerticalCenter"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvReceivedEventsUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="id: 100"
+        app:layout_constraintTop_toBottomOf="@id/tvEventsUrl"
+        app:layout_constraintStart_toEndOf="@id/glVerticalCenter"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 
