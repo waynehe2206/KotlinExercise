@@ -42,6 +42,9 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setListener()
+
         binding.rvUserList.adapter = githubUserListAdapter
         githubUserViewModel.loadGithubUsers()
     }
@@ -50,6 +53,20 @@ class MainFragment : Fragment() {
         githubUserViewModel.apply {
             githubUsers.observe(this@MainFragment) {
                 githubUserListAdapter.submitList(it)
+            }
+            isListRefreshing.observe(this@MainFragment) {
+                binding.srlRefreshLayout.isRefreshing = it
+            }
+            scrollListToTop.observe(this@MainFragment) {
+                binding.rvUserList.scrollToPosition(0)
+            }
+        }
+    }
+
+    private fun setListener(){
+        binding.apply {
+            srlRefreshLayout.setOnRefreshListener {
+                githubUserViewModel.refreshGithubUsers(true)
             }
         }
     }
