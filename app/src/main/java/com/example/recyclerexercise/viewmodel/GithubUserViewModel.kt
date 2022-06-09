@@ -24,14 +24,14 @@ class GithubUserViewModel(private val githubUserRepository: GithubUserRepository
     private var isListRefreshingFlag = false
     val isListRefreshing: MutableLiveData<Boolean> = MutableLiveData(isListRefreshingFlag)
 
-    private val _githubUsers = LiveEvent<List<GithubUser>>()
-    val githubUsers: LiveData<List<GithubUser>> = _githubUsers
+    private val _githubUsers = LiveEvent<ArrayList<GithubUser>>()
+    val githubUsers: LiveData<ArrayList<GithubUser>> = _githubUsers
 
     fun loadGithubUsers(){
         viewModelScope.launch(Dispatchers.IO) {
             val githubUserList = githubUserRepository.getUsers()
             viewModelScope.launch(Dispatchers.Main){
-                _githubUsers.value = githubUserList
+                _githubUsers.value = ArrayList(githubUserList)
             }
         }
     }
@@ -40,7 +40,11 @@ class GithubUserViewModel(private val githubUserRepository: GithubUserRepository
         viewModelScope.launch(Dispatchers.IO) {
             val githubUserList = githubUserRepository.getUsers(since)
             viewModelScope.launch(Dispatchers.Main){
-                _githubUsers.value = githubUserList
+                _githubUsers.value?.let {
+                    val newUserList = ArrayList(it)
+                    newUserList.addAll(githubUserList)
+                    _githubUsers.value = newUserList
+                }
             }
         }
     }
@@ -51,7 +55,7 @@ class GithubUserViewModel(private val githubUserRepository: GithubUserRepository
         setListRefreshing(true)
 
         viewModelScope.launch(Dispatchers.IO){
-            loadGithubUsers((0..10).random())
+            loadGithubUsers(0)
 
             if (needScrollToTop){
                 scrollListToTop()
@@ -75,5 +79,15 @@ class GithubUserViewModel(private val githubUserRepository: GithubUserRepository
             delay(500)
             _scrollListToTop.value = Unit
         }
+    }
+
+    fun getLastUserId(): Int{
+        val lastUserId = _githubUsers.value?.let {
+            it[it.size-1].id
+        }
+
+        lastUserId?.let {
+            return it
+        }?: return 0
     }
 }

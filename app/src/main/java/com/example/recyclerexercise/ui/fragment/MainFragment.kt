@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerexercise.adapter.GithubUserListAdapter
 import com.example.recyclerexercise.databinding.FragmentMainBinding
 import com.example.recyclerexercise.viewmodel.GithubUserViewModel
@@ -52,7 +54,7 @@ class MainFragment : Fragment() {
     private fun observeData(){
         githubUserViewModel.apply {
             githubUsers.observe(this@MainFragment) {
-                githubUserListAdapter.submitList(it)
+                githubUserListAdapter.submitList(it.toList())
             }
             isListRefreshing.observe(this@MainFragment) {
                 binding.srlRefreshLayout.isRefreshing = it
@@ -68,6 +70,23 @@ class MainFragment : Fragment() {
             srlRefreshLayout.setOnRefreshListener {
                 githubUserViewModel.refreshGithubUsers(true)
             }
+            rvUserList.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    githubUserViewModel.run {
+                        if (newState == RecyclerView.SCROLL_STATE_IDLE && isListScrolledToBottom() ) {
+                            loadGithubUsers(getLastUserId())
+                        }
+                    }
+                    super.onScrollStateChanged(recyclerView, newState)
+                }
+
+                private fun isListScrolledToBottom(): Boolean {
+                    val lastCompletelyVisibleItemPosition =
+                        (rvUserList.layoutManager as LinearLayoutManager)
+                            .findLastCompletelyVisibleItemPosition()
+                    return githubUserListAdapter.itemCount - 1 == lastCompletelyVisibleItemPosition
+                }
+            })
         }
     }
 }
