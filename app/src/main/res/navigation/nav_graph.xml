@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_to_userDetailFragment"
             app:destination="@id/userDetailFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
     </fragment>
     <fragment
         android:id="@+id/userDetailFragment"
@@ -23,4 +26,9 @@
             android:name="userData"
             app:argType="com.example.recyclerexercise.data.model.GithubUser" />
     </fragment>
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="com.example.recyclerexercise.ui.fragment.VideoFragment"
+        android:label="fragment_video"
+        tools:layout="@layout/fragment_video" />
 </navigation>

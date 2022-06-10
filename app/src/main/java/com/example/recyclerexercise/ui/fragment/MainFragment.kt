@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerexercise.adapter.GithubUserListAdapter
@@ -48,6 +49,10 @@ class MainFragment : Fragment() {
         setListener()
 
         binding.rvUserList.adapter = githubUserListAdapter
+        binding.fabVideoButton.setOnClickListener {
+            val action = MainFragmentDirections.actionMainFragmentToVideoFragment()
+            it.findNavController().navigate(action)
+        }
         githubUserViewModel.loadGithubUsers()
     }
 
