@@ -7,7 +7,7 @@
     tools:context=".ui.fragment.UserDetailFragment">
 
     <ImageView
-        android:id="@+id/ivUserThumbnail"
+        android:id="@+id/iv_user_thumbnail"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="10dp"
@@ -16,162 +16,162 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:src="@drawable/ic_launcher_background"/>
     <TextView
-        android:id="@+id/tvType"
+        android:id="@+id/tv_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Type"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/ivUserThumbnail"
+        app:layout_constraintTop_toBottomOf="@id/iv_user_thumbnail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/tvUserName"
+        android:id="@+id/tv_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_blank_fragment"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/tvType"
+        app:layout_constraintTop_toBottomOf="@id/tv_type"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/glVerticalCenter"
+        android:id="@+id/gl_vertical_center"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5"/>
 
     <TextView
-        android:id="@+id/tvUserId"
+        android:id="@+id/tv_user_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/user_detail_id"
-        app:layout_constraintTop_toBottomOf="@id/tvUserName"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/glVerticalCenter"/>
+        app:layout_constraintEnd_toStartOf="@id/gl_vertical_center"/>
 
     <TextView
-        android:id="@+id/tvNodeId"
+        android:id="@+id/tv_node_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/user_detail_node_id"
-        app:layout_constraintTop_toBottomOf="@id/tvUserId"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_id"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/glVerticalCenter"/>
+        app:layout_constraintEnd_toStartOf="@id/gl_vertical_center"/>
 
     <TextView
-        android:id="@+id/tvUrl"
+        android:id="@+id/tv_url"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Node Id: 100"
-        app:layout_constraintTop_toBottomOf="@id/tvNodeId"
+        app:layout_constraintTop_toBottomOf="@id/tv_node_id"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/glVerticalCenter"/>
+        app:layout_constraintEnd_toStartOf="@id/gl_vertical_center"/>
 
     <TextView
-        android:id="@+id/tvHtmlUrl"
+        android:id="@+id/tv_html_url"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Node Id: 100"
-        app:layout_constraintTop_toBottomOf="@id/tvUrl"
+        app:layout_constraintTop_toBottomOf="@id/tv_url"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/glVerticalCenter"/>
+        app:layout_constraintEnd_toStartOf="@id/gl_vertical_center"/>
 
     <TextView
-        android:id="@+id/tvFollowerUrl"
+        android:id="@+id/tv_follower_url"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Node Id: 100"
-        app:layout_constraintTop_toBottomOf="@id/tvHtmlUrl"
+        app:layout_constraintTop_toBottomOf="@id/tv_html_url"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/glVerticalCenter"/>
+        app:layout_constraintEnd_toStartOf="@id/gl_vertical_center"/>
 
     <TextView
-        android:id="@+id/tvFollowingUrl"
+        android:id="@+id/tv_following_url"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Node Id: 100"
-        app:layout_constraintTop_toBottomOf="@id/tvFollowerUrl"
+        app:layout_constraintTop_toBottomOf="@id/tv_follower_url"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/glVerticalCenter"/>
+        app:layout_constraintEnd_toStartOf="@id/gl_vertical_center"/>
 
     <TextView
-        android:id="@+id/tvGistUrl"
+        android:id="@+id/tv_gist_url"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Node Id: 100"
-        app:layout_constraintTop_toBottomOf="@id/tvFollowingUrl"
+        app:layout_constraintTop_toBottomOf="@id/tv_following_url"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/glVerticalCenter"/>
+        app:layout_constraintEnd_toStartOf="@id/gl_vertical_center"/>
 
     <TextView
-        android:id="@+id/tvStarredUrl"
+        android:id="@+id/tv_starred_url"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="id: 100"
-        app:layout_constraintTop_toBottomOf="@id/tvUserName"
-        app:layout_constraintStart_toEndOf="@id/glVerticalCenter"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_name"
+        app:layout_constraintStart_toEndOf="@id/gl_vertical_center"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/tvSubscriptionUrl"
+        android:id="@+id/tv_subscription_url"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="id: 100"
-        app:layout_constraintTop_toBottomOf="@id/tvStarredUrl"
-        app:layout_constraintStart_toEndOf="@id/glVerticalCenter"
+        app:layout_constraintTop_toBottomOf="@id/tv_starred_url"
+        app:layout_constraintStart_toEndOf="@id/gl_vertical_center"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/tvOrganizationUrl"
+        android:id="@+id/tv_organization_url"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="id: 100"
-        app:layout_constraintTop_toBottomOf="@id/tvSubscriptionUrl"
-        app:layout_constraintStart_toEndOf="@id/glVerticalCenter"
+        app:layout_constraintTop_toBottomOf="@id/tv_subscription_url"
+        app:layout_constraintStart_toEndOf="@id/gl_vertical_center"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/tvRepoUrl"
+        android:id="@+id/tv_repo_url"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="id: 100"
-        app:layout_constraintTop_toBottomOf="@id/tvOrganizationUrl"
-        app:layout_constraintStart_toEndOf="@id/glVerticalCenter"
+        app:layout_constraintTop_toBottomOf="@id/tv_organization_url"
+        app:layout_constraintStart_toEndOf="@id/gl_vertical_center"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/tvEventsUrl"
+        android:id="@+id/tv_events_url"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="id: 100"
-        app:layout_constraintTop_toBottomOf="@id/tvRepoUrl"
-        app:layout_constraintStart_toEndOf="@id/glVerticalCenter"
+        app:layout_constraintTop_toBottomOf="@id/tv_repo_url"
+        app:layout_constraintStart_toEndOf="@id/gl_vertical_center"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/tvReceivedEventsUrl"
+        android:id="@+id/tv_received_events_url"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="id: 100"
-        app:layout_constraintTop_toBottomOf="@id/tvEventsUrl"
-        app:layout_constraintStart_toEndOf="@id/glVerticalCenter"
+        app:layout_constraintTop_toBottomOf="@id/tv_events_url"
+        app:layout_constraintStart_toEndOf="@id/gl_vertical_center"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 

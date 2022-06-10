@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/main_dest">
 
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/main_dest"
         android:name="com.example.recyclerexercise.ui.fragment.MainFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_userDetailFragment"
-            app:destination="@id/userDetailFragment" />
+            app:destination="@id/user_detail_dest" />
         <action
             android:id="@+id/action_mainFragment_to_videoFragment"
-            app:destination="@id/videoFragment" />
+            app:destination="@id/video_dest" />
     </fragment>
     <fragment
-        android:id="@+id/userDetailFragment"
+        android:id="@+id/user_detail_dest"
         android:name="com.example.recyclerexercise.ui.fragment.UserDetailFragment"
         android:label="@string/user_detail_title"
         tools:layout="@layout/fragment_user_detail" >
@@ -27,7 +27,7 @@
             app:argType="com.example.recyclerexercise.data.model.GithubUser" />
     </fragment>
     <fragment
-        android:id="@+id/videoFragment"
+        android:id="@+id/video_dest"
         android:name="com.example.recyclerexercise.ui.fragment.VideoFragment"
         android:label="fragment_video"
         tools:layout="@layout/fragment_video" />
